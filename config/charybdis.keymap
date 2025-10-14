@@ -42,7 +42,7 @@
         leader1: leader1 {
             compatible = "zmk,behavior-leader-key";
             #binding-cells = <0>;
-            usb { sequence = <S>; bindings = <&kp RC(S)>; };
+            save { sequence = <H>; bindings = <&kp RC(S)>; };
         };
 
         gqt: global-quick-tap {
