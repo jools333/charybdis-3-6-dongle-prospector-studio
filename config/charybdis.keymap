@@ -25,12 +25,13 @@
 
 &mt {
   flavor = "tap-preferred";
+  tapping-term-ms = <120>;
 };
 
 &lt {
   flavor = "balanced";
-  tapping-term-ms = <200>;
-  quick-tap-ms = <175>;
+  tapping-term-ms = <120>;
+  quick-tap-ms = <120>;
 };
 
 &caps_word {
@@ -50,7 +51,7 @@
             label = "GLOBAL_QUICK_TAP";
             #binding-cells = <2>;
             flavor = "tap-preferred";
-            tapping-term-ms = <200>;
+            tapping-term-ms = <120>;
             quick-tap-ms = <125>;
             global-quick-tap;
             bindings = <&kp>, <&kp>;
