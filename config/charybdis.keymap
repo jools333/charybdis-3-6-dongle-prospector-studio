@@ -242,7 +242,7 @@
     MouseSnip {
       display-name = "Mouse snip";
       bindings = <
-        &trans   &trans   &mo 4   &mo 3    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
+        &trans   &trans   &mo 7   &mo 6    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
         &trans   &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans            &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans     &trans
         &trans   &trans   &trans   &mo 3     &mo 2     &trans            &trans &trans   &trans   &trans   &trans     &trans
                           &mkp MB2  &mkp MB3  &mkp MB1          &trans &to 0
@@ -252,7 +252,7 @@
     MouseScroll {
       display-name = "Mouse scroll";
       bindings = <
-        &trans   &trans   &mo 4   &mo 3    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
+        &trans   &trans   &mo 7   &mo 6    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
         &trans   &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans            &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans     &trans
         &trans   &trans   &trans   &mo 3     &mo 2     &trans            &trans &trans   &trans   &trans   &trans     &trans
                           &mkp MB2  &mkp MB3  &mkp MB1          &trans &to 0
