@@ -26,7 +26,7 @@
     device = <&trackball_split>;
 
     snipe {
-      layers = <MOUSE_SNIP>;
+      layers = <MOUSE>;
       input-processors = <&zip_xy_scaler 1 3>;
     };
 
