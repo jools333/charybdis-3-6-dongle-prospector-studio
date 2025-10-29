@@ -27,7 +27,7 @@
 
     snipe {
       layers = <MOUSE_SNIP>;
-      input-processors = <&zip_xy_scaler 1 4>;
+      input-processors = <&zip_xy_scaler 1 5>;
     };
 
     scroll {
