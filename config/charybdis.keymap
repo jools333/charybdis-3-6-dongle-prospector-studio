@@ -204,7 +204,10 @@
       display-name = "Symbol";
 
       bindings = <
-&kp RS(INSERT)  &kp EXCLAMATION  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT  &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC  &kp LCTRL  &tog 4  &none  &none  &kp BACKSPACE  &tog 3  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE  &kp LALT  &tog 5  &kp LC(X)  &none  &kp LC(LA(P))  &none  &kp UNDER  &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE  &kp LGUI  &trans  &kp SPACE  &mt LSHFT ENTER  &trans  &kp RALT
+&kp RS(INSERT)  &kp EXCLAMATION  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT            &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
+&kp LCTRL  &tog 4  &none  &kp RGUI  &kp BACKSPACE  &tog 3                            &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
+&kp LALT  &tog 5  &kp LC(X)  &none  &kp LC(LA(P))  &none                          &kp UNDER  &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
+                                           &kp RGUI  &trans  &kp SPACE            &mt LSHFT ENTER  &trans  &kp RALT
       >;
     };
 
