@@ -26,12 +26,13 @@
 &mt {
   flavor = "tap-preferred";
   tapping-term-ms = <120>;
+  quick-tap-ms = <180>;
 };
 
 &lt {
   flavor = "balanced";
   tapping-term-ms = <120>;
-  quick-tap-ms = <300>;
+  quick-tap-ms = <180>;
 };
 
 &caps_word {
