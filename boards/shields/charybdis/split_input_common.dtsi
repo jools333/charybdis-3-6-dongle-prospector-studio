@@ -6,8 +6,7 @@
 #define SYM 2
 #define NUM 3
 #define FN 4
-#define MOUSE_SNIP 6
-#define MOUSE_SCROLL 7
+#define GENSHIN 5 
 
 / {
   split_inputs {
@@ -26,19 +25,19 @@
     device = <&trackball_split>;
 
     snipe {
-      layers = <MOUSE_SNIP>;
-      input-processors = <&zip_xy_scaler 1 6>;
+      layers = <NUM>;
+      input-processors = <&zip_xy_scaler 1 3>;
     };
 
     scroll {
-      layers = <MOUSE_SCROLL>;
+      layers = <FN>;
       input-processors = <&zip_xy_transform (INPUT_TRANSFORM_Y_INVERT)>, <&zip_xy_scaler 1 3>, <&zip_xy_to_scroll_mapper>;
     };
 
-    /* move { */
-    /*   layers = <DEF MOUSE>; */
-    /*   input-processors = <&auto_mouse_layer MOUSE 1000>; */
-    /* }; */
+    move {
+      layers = <DEF MOUSE>;
+      input-processors = <&auto_mouse_layer MOUSE 1000>;
+    };
   };
 
   auto_mouse_layer: auto_mouse_layer {

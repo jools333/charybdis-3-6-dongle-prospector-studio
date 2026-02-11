@@ -25,14 +25,12 @@
 
 &mt {
   flavor = "tap-preferred";
-  tapping-term-ms = <120>;
-  quick-tap-ms = <180>;
 };
 
 &lt {
   flavor = "balanced";
-  tapping-term-ms = <120>;
-  quick-tap-ms = <180>;
+  tapping-term-ms = <200>;
+  quick-tap-ms = <175>;
 };
 
 &caps_word {
@@ -40,138 +38,118 @@
 };
 
 / {
-    behaviors {
-        leader1: leader1 {
-            compatible = "zmk,behavior-leader-key";
-            #binding-cells = <0>;
-            save { sequence = <H>; bindings = <&kp RC(S)>; };
-        };
-
-        gqt: global-quick-tap {
-            compatible = "zmk,behavior-hold-tap";
-            label = "GLOBAL_QUICK_TAP";
-            #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <120>;
-            quick-tap-ms = <125>;
-            global-quick-tap;
-            bindings = <&kp>, <&kp>;
-        };
-
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_CLOSE";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings =
-                <&kp SEMICOLON>,
-                <&kp LS(LG(Q))>;
-        };
-        td1: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_WEB";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings =
-                <&kp COMMA>,
-                <&kp RG(S)>;
-        };
+  behaviors {
+    hml: hml {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <2000>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <250>;
+      hold-trigger-key-positions = <KEYS_R THUMBS>;
+      hold-trigger-on-release;
+      bindings =
+        <&kp>,
+        <&kp>;
     };
 
-    combos {
-        compatible = "zmk,combos";
-
-        vpn_toggle {
-            bindings = <&kp LS(LG(P))>;
-            key-positions = <10 1>;
-        };
-
-        web {
-            bindings = <&kp RG(S)>;
-            key-positions = <12 23>;
-        };
-
-        Lang_switch {
-            bindings = <&kp RG(SPACE)>;
-            key-positions = <16 19>;
-        };
-
-        close {
-            bindings = <&kp LS(LG(Q))>;
-            key-positions = <25 34>;
-        };
-
-        Editor {
-            bindings = <&kp RG(Z)>;
-            key-positions = <28 31>;
-        };
-
-        Save {
-            bindings = <&kp LC(S)>;
-            key-positions = <16 22>;
-        };
-
-        Messenger {
-            bindings = <&kp RG(A)>;
-            key-positions = <4 7>;
-        };
-
-        Cmd {
-            bindings = <&kp RG(X)>;
-            key-positions = <3 8>;
-        };
-
-        Ctrl_p {
-            bindings = <&kp RC(P)>;
-            key-positions = <13 22>;
-        };
-
-        arrow {
-            bindings = <&arrow>;
-            key-positions = <9 2>;
-        };
-
-        Change_win {
-            bindings = <&kp LA(TAB)>;
-            key-positions = <27 32>;
-        };
-
-        fat_arrow {
-            bindings = <&fat_arrow>;
-            key-positions = <26 33>;
-        };
-
-        vpn2_toggle {
-            bindings = <&kp LS(LG(Y))>;
-            key-positions = <25 34>;
-        };
-
-        search {
-            bindings = <&kp LC(F12)>;
-            key-positions = <37 40>;
-        };
+    hmr: hmr {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <2000>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <250>;
+      hold-trigger-key-positions = <KEYS_L THUMBS>;
+      hold-trigger-on-release;
+      bindings =
+        <&kp>,
+        <&kp>;
+    };
+    hml_s: hml_s {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <2000>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <0>;
+      hold-trigger-key-positions = <KEYS_R THUMBS>;
+      hold-trigger-on-release;
+      bindings =
+        <&kp>,
+        <&kp>;
     };
 
-    macros {
-        arrow: arrow {
-            compatible = "zmk,behavior-macro";
-            label = "arrow";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_tap>,
-                <&kp MINUS &kp GREATER_THAN>;
-        };
-        fat_arrow: fat_arrow {
-            compatible = "zmk,behavior-macro";
-            label = "fat_arrow";
-            #binding-cells = <0>;
-            bindings =
-                <&macro_tap>,
-                <&kp EQUAL &kp GREATER_THAN>;
-        };
+    hmr_s: hmr_s {
+      compatible = "zmk,behavior-hold-tap";
+      #binding-cells = <2>;
+      flavor = "balanced";
+      tapping-term-ms = <2000>;
+      quick-tap-ms = <175>;
+      require-prior-idle-ms = <0>;
+      hold-trigger-key-positions = <KEYS_L THUMBS>;
+      hold-trigger-on-release;
+      bindings =
+        <&kp>,
+        <&kp>;
     };
 
 
+    smart_shift: smart_shift {
+      compatible = "zmk,behavior-mod-morph";
+      #binding-cells = <0>;
+      bindings = <&sk LSHIFT>, <&caps_word>;
+      mods = <(MOD_LSFT)>;
+    };
+  };
+
+  combos {
+    compatible = "zmk,combos";
+    timeout-ms = <20>;
+    require-prior-idle-ms = <250>;
+
+    combo_reset_layer_left {
+      key-positions = <20 24>;
+      bindings = <&to RESET>;
+    };
+    combo_reset_layer_right {
+      key-positions = <25 29>;
+      bindings = <&to RESET>;
+    };
+    combo_reset_central {
+      key-positions = <32 33>;
+      bindings = <&bootloader>;
+      require-prior-idle-ms = <2000>;
+    };
+    combo_normal {
+      key-positions = <7 8>;
+      bindings = <&to BASE>;
+    };
+    combo_fn {
+      key-positions = <27 28>;
+      bindings = <&sl FUNCTION>;
+    };
+    combo_genshin {
+      key-positions = <5 9>;
+      bindings = <&to GAME>;
+    };
+    combo_esc {
+      key-positions = <1 2>;
+      bindings = <&kp ESCAPE>;
+    };
+    combo_tab {
+      key-positions = <2 3>;
+      bindings = <&kp TAB>;
+    };
+    combo_cdel {
+      key-positions = <11 12>;
+      bindings = <&kp LC(BACKSPACE)>;
+    };
+    combo_unlock {
+      key-positions = <0 4>;
+      bindings = <&studio_unlock>;
+    };
+  };
   chosen {
     zmk,physical-layout = &charybdis_6col_layout;
   };
@@ -180,47 +158,43 @@
     compatible = "zmk,keymap";
 
     Base {
-      
       display-name = "Base";
-
       bindings = <
-&kp TAB        &kp Q     &lt 7 W     &lt 1 E  &lt 6 R  &kp T                                 &kp Y  &kp U  &kp I  &kp O  &kp P  &kp LBKT    
-&kp LGUI       &kp A     &kp S     &kp D  &gqt LEFT_CONTROL F  &gqt LEFT_ALT G         &kp H  &kp J  &kp K  &kp L  &kp SEMICOLON  &mt LEFT_CONTROL SINGLE_QUOTE  
-&leader1       &kp Z     &kp X     &kp C  &kp V                                        &kp B  &kp N  &kp M  &kp COMMA  &kp DOT  &kp SLASH  &mt LEFT_ALT ESC  
-                &mt LEFT_GUI DELETE  &lt 2 DEL  &mt LEFT_SHIFT SPACE                   &mt LEFT_SHIFT ENTER  &lt 3  BACKSPACE  &kp RGUI
-            >;
+        &lt FUNCTION ESCAPE   &kp Q        &kp W        &kp E           &kp R        &kp T                     &kp Y                &kp U                      &kp I          &kp O         &kp P            &trans
+        &kp TAB           &hml LGUI A  &hml LALT S  &hml LSHFT D    &hml LCTRL F &kp G                     &kp H                &hmr RCTRL J               &hmr RSHFT K   &hmr RALT L   &hmr LGUI SEMI   &trans
+        &kp LSHFT         &kp Z        &mt LC(X) X  &mt LC(C) C     &kp V        &mt LC(V) B               &kp N                &kp M                      &kp COMMA      &kp DOT       &kp FSLH         &trans
+                                       &kp LCTRL    &mo 2     &mt LGUI RET          &lt NUMBER SPACE       &kp BSPC
+      >;
     };
 
     Mouse {
       display-name = "Mouse";
       bindings = <
-        &trans   &trans   &mo 7   &mo 6    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
+        &trans   &trans   &trans   &trans    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
         &trans   &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans            &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans     &trans
         &trans   &trans   &trans   &mo 3     &mo 2     &trans            &trans &trans   &trans   &trans   &trans     &trans
-                          &mkp MB2  &mkp MB3  &mkp MB1          &trans &to 0
+                          &mkp MB1  &mkp MB2  &mkp MB3          &trans &trans 
       >;
     };
 
     Sym {
       display-name = "Symbol";
-
       bindings = <
-&kp RS(INSERT)  &kp EXCLAMATION  &kp AT  &kp HASH  &kp DLLR  &kp PRCNT            &kp CARET  &kp AMPS  &kp STAR  &kp LPAR  &kp RPAR  &kp BSPC
-&kp LCTRL  &tog 4  &none  &kp RGUI  &kp BACKSPACE  &tog 3                            &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &kp BSLH  &kp GRAVE
-&kp LALT  &tog 5  &kp LC(X)  &none  &kp LC(LA(P))  &none                          &kp UNDER  &kp PLUS  &kp LBRC  &kp RBRC  &kp PIPE  &kp TILDE
-                                           &kp RGUI  &trans  &kp SPACE            &mt LSHFT ENTER  &trans  &kp RALT
+        &trans &none &none &kp LEFT_BRACE       &kp RIGHT_BRACE       &kp PIPE              &kp GRAVE &kp TILDE &kp LESS_THAN &kp GREATER_THAN &kp BACKSLASH        &trans
+        &trans &none &none &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp COLON             &kp PLUS  &kp MINUS &kp SLASH     &kp ASTRK        &kp SINGLE_QUOTE     &trans
+        &trans &none &none &kp LEFT_BRACKET     &kp RIGHT_BRACKET     &kp QUESTION          &kp AMPS  &kp EQUAL &kp UNDER     &kp PERIOD       &kp DOUBLE_QUOTES    &trans
+                    &none                &none                 &trans                &none     &none                                                                     
       >;
     };
 
     Num {
       display-name = "Number";
-
       bindings = <
-&kp RC(C)  &kp N1         &kp N2    &kp N3  &kp N4  &kp N5                      &kp N6    &kp N7    &kp N8  &kp N9     &kp N0     &kp SEMICOLON
-&kp RC(V)  &kp RC(LS(I))  &kp HOME  &kp END  &kp BACKSPACE  &kp LC(F12)         &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp MINUS  &mt LEFT_CONTROL F12
-&kp RC(X)  &kp F1  &kp F2  &kp F3  &kp F4  &kp F5                               &kp F6    &kp F7    &kp F8  &kp F9     &kp F10    &kp F11
-                &kp LC(F3)  &kp LALT  &mt LEFT_CONTROL TAB                      &mt LSHFT ENTER  &trans  &kp SPACE
-            >;
+        &trans   &none    &kp N7         &kp N8          &kp N9          &none                  &none         &kp PG_UP         &kp UP            &kp PG_DN         &none          &trans
+        &trans   &kp LGUI &hml_s LALT N4 &hml_s LSHFT N5 &hml_s LCTRL N6 &none                  &none         &hmr_s RCTRL LEFT &hmr_s RSHFT DOWN &hmr_s RALT RIGHT &kp RGUI       &trans
+        &trans   &none    &kp N1         &kp N2          &kp N3          &kp LC(MINUS)          &kp LC(EQUAL) &kp HOME          &trans            &kp END           &none          &trans
+                                &kp DOT         &kp N0          &kp SPACE              &trans        &none
+      >;
     };
 
     Fun {
@@ -240,26 +214,6 @@
         &trans &kp LCTRL  &kp A &kp S    &kp D     &kp F          &none  &mkp MB1 &mkp MB2 &mkp MB3 &none   &trans 
         &trans &kp LSHIFT &kp Z &kp X    &kp C     &kp V          &kp N1 &kp N2   &kp N3   &kp N4   &kp N5  &trans
                          &kp LALT &kp SPACE &kp M          &kp T  &kp B                      
-      >;
-    };
-
-    MouseSnip {
-      display-name = "Mouse snip";
-      bindings = <
-        &trans   &trans   &mo 7   &trans    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
-        &trans   &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans            &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans     &trans
-        &trans   &trans   &trans   &mo 3     &mo 2     &trans            &trans &trans   &trans   &trans   &trans     &trans
-                          &mkp MB2  &mkp MB3  &mkp MB1          &trans &to 0
-      >;
-    };
-
-    MouseScroll {
-      display-name = "Mouse scroll";
-      bindings = <
-        &trans   &trans   &mo 7   &mo 6    &trans    &trans            &trans &trans   &trans   &trans   &trans     &trans 
-        &trans   &kp LGUI &kp LALT &kp LSHFT &kp LCTRL &trans            &trans &mkp MB1 &mkp MB2 &mkp MB3 &trans     &trans
-        &trans   &trans   &trans   &mo 3     &mo 2     &trans            &trans &trans   &trans   &trans   &trans     &trans
-                          &mkp MB2  &mkp MB3  &mkp MB1          &trans &to 0
       >;
     };
 
