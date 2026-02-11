@@ -52,26 +52,9 @@
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <120>;
-            quick-tap-ms = <125>;
             require-prior-idle-ms = <125>;
             bindings = <&kp>, <&kp>;
-        };
-
-        td0: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings =
-                <&kp SEMICOLON>,
-                <&kp LS(LG(Q))>;
-        };
-        td1: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            #binding-cells = <0>;
-            tapping-term-ms = <300>;
-            bindings =
-                <&kp COMMA>,
-                <&kp RG(S)>;
+            display-name = "Mod-Tap";
         };
     };
 
